@@ -16,11 +16,14 @@ component "pl-ruby-patch" do |pkg, settings, platform|
     ruby_api_version = settings[:ruby_version].gsub(/\.\d*$/, '.0')
     ruby_version_y = settings[:ruby_version].gsub(/(\d+)\.(\d+)\.(\d+)/, '\1.\2')
 
-    base_ruby = case platform.name
-                when /solaris-10/
+    base_ruby = if platform.name =~ /solaris-10/
                   "/opt/csw/lib/ruby/2.0.0"
-                when /osx/
-                  "/usr/local/opt/ruby@#{ruby_version_y}/lib/ruby/#{ruby_api_version}"
+                elsif platform.is_macos?
+                  if platform.is_cross_compiled?
+                    '/usr/bin/ruby'
+                  else
+                    "/usr/local/opt/ruby@#{ruby_version_y}/lib/ruby/#{ruby_api_version}"
+                  end
                 else
                   "/opt/pl-build-tools/lib/ruby/2.1.0"
                 end
