@@ -96,7 +96,7 @@ component 'ruby-2.5.9' do |pkg, settings, platform|
     # This normalizes the build string to something like AIX 7.1.0.0 rather
     # than AIX 7.1.0.2 or something
     special_flags += " --build=#{settings[:platform_triple]} "
-  elsif platform.is_cross_compiled? && (platform.is_linux? || platform.is_macos?)
+  elsif platform.is_cross_compiled? && platform.is_linux?
     special_flags += " --with-baseruby=#{host_ruby} "
   elsif platform.is_solaris? && platform.architecture == "sparc"
     special_flags += " --with-baseruby=#{host_ruby} --enable-close-fds-by-recvmsg-with-peek "
