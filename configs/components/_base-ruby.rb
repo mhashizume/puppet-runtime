@@ -48,7 +48,11 @@ elsif platform.is_windows?
 elsif platform.is_macos?
   pkg.environment 'optflags', settings[:cflags]
   if platform.is_cross_compiled?
-    pkg.build_requires "ruby@#{ruby_version_y}"
+    pkg.build_requires 'rbenv ruby-build'
+    pkg.configure { ['/usr/local/bin/rbenv install 2.5.9'] }
+    pkg.configure { ['/usr/local/bin/rbenv init'] }
+    pkg.configure { ['curl -fsSL https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash'] }
+    pkg.configure { ['/usr/local/bin/rbenv global 2.5.9'] }
     pkg.environment 'CC', 'clang -target arm64-apple-macos11' if platform.name =~ /osx-11/
     pkg.environment 'CC', 'clang -target arm64-apple-macos12' if platform.name =~ /osx-12/
   end

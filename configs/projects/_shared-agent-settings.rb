@@ -114,9 +114,6 @@ elsif platform.is_cross_compiled_linux? || (platform.is_solaris? && platform.arc
     proj.setting(:host_ruby, "/opt/pl-build-tools/bin/ruby")
     proj.setting(:host_gem, "/opt/pl-build-tools/bin/gem")
   end
-elsif platform.is_cross_compiled? && platform.is_macos?
-  proj.setting(:host_ruby, "/usr/local/opt/ruby@#{ruby_version_y}/bin/ruby")
-  proj.setting(:host_gem, "/usr/local/opt/ruby@#{ruby_version_y}/bin/gem")
 else
   proj.setting(:host_ruby, File.join(proj.ruby_bindir, "ruby"))
   proj.setting(:host_gem, File.join(proj.ruby_bindir, "gem"))

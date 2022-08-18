@@ -1,0 +1,140 @@
+{
+  "packaging_type": {
+    "vanagon": "0.29.0"
+  },
+  "version": "202208160",
+  "components": {
+    "runtime-agent": {
+    },
+    "openssl-1.1.1": {
+      "version": "1.1.1q",
+      "url": "https://openssl.org/source/openssl-1.1.1q.tar.gz"
+    },
+    "curl": {
+      "version": "7.83.1",
+      "url": "https://curl.se/download/curl-7.83.1.tar.gz"
+    },
+    "puppet-ca-bundle": {
+      "version": "1.0.11",
+      "url": "https://github.com/puppetlabs/puppet-ca-bundle.git",
+      "ref": "refs/tags/1.0.11"
+    },
+    "ruby-2.5.9": {
+      "version": "2.5.9",
+      "url": "https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.9.tar.gz"
+    },
+    "augeas": {
+      "version": "1.13.0",
+      "url": "https://github.com/hercules-team/augeas/releases/download/release-1.13.0/augeas-1.13.0.tar.gz"
+    },
+    "libxml2": {
+      "version": "2.9.8",
+      "url": "http://xmlsoft.org/sources/libxml2-2.9.8.tar.gz"
+    },
+    "libxslt": {
+      "version": "1.1.33",
+      "url": "http://xmlsoft.org/sources/libxslt-1.1.33.tar.gz"
+    },
+    "ruby-augeas": {
+      "version": "0.5.0",
+      "url": "http://download.augeas.net/ruby/ruby-augeas-0.5.0.tgz"
+    },
+    "ruby-shadow": {
+      "version": "2.5.0",
+      "url": "https://github.com/apalmblad/ruby-shadow",
+      "ref": "refs/tags/2.5.0"
+    },
+    "pl-ruby-patch": {
+    },
+    "rubygem-hocon": {
+      "version": "1.3.1",
+      "url": "https://rubygems.org/downloads/hocon-1.3.1.gem"
+    },
+    "rubygem-deep_merge": {
+      "version": "1.0.1",
+      "url": "https://rubygems.org/downloads/deep_merge-1.0.1.gem"
+    },
+    "rubygem-net-ssh": {
+      "version": "4.2.0",
+      "url": "https://rubygems.org/downloads/net-ssh-4.2.0.gem"
+    },
+    "rubygem-semantic_puppet": {
+      "version": "1.0.4",
+      "url": "https://rubygems.org/downloads/semantic_puppet-1.0.4.gem"
+    },
+    "rubygem-text": {
+      "version": "1.3.1",
+      "url": "https://rubygems.org/downloads/text-1.3.1.gem"
+    },
+    "rubygem-locale": {
+      "version": "2.1.3",
+      "url": "https://rubygems.org/downloads/locale-2.1.3.gem"
+    },
+    "rubygem-gettext": {
+      "version": "3.2.2",
+      "url": "https://rubygems.org/downloads/gettext-3.2.2.gem"
+    },
+    "rubygem-fast_gettext": {
+      "version": "1.1.2",
+      "url": "https://rubygems.org/downloads/fast_gettext-1.1.2.gem"
+    },
+    "rubygem-CFPropertyList": {
+      "version": "2.3.6",
+      "url": "https://rubygems.org/downloads/CFPropertyList-2.3.6.gem"
+    },
+    "rubygem-racc": {
+      "version": "1.6.0",
+      "url": "https://rubygems.org/downloads/racc-1.6.0.gem"
+    },
+    "rubygem-mini_portile2": {
+      "version": "2.8.0",
+      "url": "https://rubygems.org/downloads/mini_portile2-2.8.0.gem"
+    },
+    "rubygem-concurrent-ruby": {
+      "version": "1.1.9",
+      "url": "https://rubygems.org/downloads/concurrent-ruby-1.1.9.gem"
+    },
+    "rubygem-ffi": {
+      "version": "1.15.5",
+      "url": "https://rubygems.org/downloads/ffi-1.15.5.gem"
+    },
+    "rubygem-multi_json": {
+      "version": "1.15.0",
+      "url": "https://rubygems.org/downloads/multi_json-1.15.0.gem"
+    },
+    "rubygem-optimist": {
+      "version": "3.0.1",
+      "url": "https://rubygems.org/downloads/optimist-3.0.1.gem"
+    },
+    "rubygem-highline": {
+      "version": "2.0.3",
+      "url": "https://rubygems.org/downloads/highline-2.0.3.gem"
+    },
+    "rubygem-hiera-eyaml": {
+      "version": "3.3.0",
+      "url": "https://rubygems.org/downloads/hiera-eyaml-3.3.0.gem"
+    },
+    "rubygem-httpclient": {
+      "version": "2.8.3",
+      "url": "https://rubygems.org/downloads/httpclient-2.8.3.gem"
+    },
+    "rubygem-thor": {
+      "version": "1.2.1",
+      "url": "https://rubygems.org/downloads/thor-1.2.1.gem"
+    },
+    "rubygem-sys-filesystem": {
+      "version": "1.4.1",
+      "url": "https://rubygems.org/downloads/sys-filesystem-1.4.1.gem"
+    },
+    "boost": {
+      "version": "1.73.0",
+      "url": "http://downloads.sourceforge.net/project/boost/boost/1.73.0/boost_1_73_0.tar.gz"
+    },
+    "yaml-cpp": {
+      "version": "yaml-cpp-0.6.2",
+      "url": "https://github.com/jbeder/yaml-cpp.git",
+      "ref": "refs/tags/yaml-cpp-0.6.2"
+    }
+  },
+  "build_time": "2022-08-17T15:39:53-07:00"
+}
