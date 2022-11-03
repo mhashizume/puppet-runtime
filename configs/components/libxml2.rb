@@ -1,11 +1,8 @@
 component "libxml2" do |pkg, settings, platform|
-  pkg.version "2.9.8"
-  pkg.md5sum "b786e353e2aa1b872d70d5d1ca0c740d"
-  pkg.url "http://xmlsoft.org/sources/#{pkg.get_name}-#{pkg.get_version}.tar.gz"
+  pkg.version "2.10.3"
+  pkg.sha256sum "302bbb86400b8505bebfbf7b3d1986e9aa05073198979f258eed4be481ff5f83"
+  pkg.url "https://gitlab.gnome.org/GNOME/libxml2/-/archive/v#{pkg.get_version}/libxml2-v#{pkg.get_version}.tar.bz2"
   pkg.mirror "#{settings[:buildsources_url]}/libxml2-#{pkg.get_version}.tar.gz"
-  # CVE-related patches needed until libxml 2.9.9 is released:
-  pkg.apply_patch 'resources/patches/libxml2/fix_nullptr_deref_with_XPath_logic_ops.patch'
-  pkg.apply_patch 'resources/patches/libxml2/fix_infinite_loop_in_LZMA_decompression.patch'
 
   if platform.is_aix?
     pkg.environment "PATH", "/opt/pl-build-tools/bin:$(PATH)"
@@ -35,21 +32,18 @@ component "libxml2" do |pkg, settings, platform|
       pkg.environment 'CC', 'clang -target arm64-apple-macos12' if platform.name =~ /osx-12/
     end
   else
-    if platform.is_el? && platform.name =~ /-5/
-      # RHEL 5 uses GCC 4.1.2, which does not support the -Wno-array-bounds option required
-      # by libxml2. This option was introduced in GCC 4.6. Thus for RHEL 5, we use pl-gcc
-      # instead.
-      pkg.environment "CC", "/opt/pl-build-tools/bin/gcc"
-    end
-
     pkg.environment "LDFLAGS", settings[:ldflags]
     pkg.environment "CFLAGS", settings[:cflags]
   end
 
   pkg.build_requires "runtime-#{settings[:runtime_project]}"
+  build_requires 'autoconf libgcrypt20 libgcrypt20-dev libtool make pkg-config'
 
   pkg.configure do
-    ["./configure --prefix=#{settings[:prefix]} --without-python #{settings[:host]}"]
+    [
+      'autoreconf -i',
+      "./configure --prefix=#{settings[:prefix]} --without-python #{settings[:host]}"
+    ]
   end
 
   pkg.build do
