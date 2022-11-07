@@ -1,12 +1,10 @@
 component "libxslt" do |pkg, settings, platform|
-  pkg.version "1.1.33"
-  pkg.md5sum "b3bd254a03e46d58f8ad1e4559cd2c2f"
-  pkg.url "http://xmlsoft.org/sources/#{pkg.get_name}-#{pkg.get_version}.tar.gz"
+  pkg.version "1.1.37"
+  pkg.sha256sum "6dbeb21aa8c938e6a39010901c0e84122bb87225b4af31f76feb4e3a5b138a5c"
+  pkg.url "https://gitlab.gnome.org/GNOME/libxslt/-/archive/v#{pkg.get_version}/libxslt-v#{pkg.get_version}.tar.bz2"
   pkg.mirror "#{settings[:buildsources_url]}/libxslt-#{pkg.get_version}.tar.gz"
 
   pkg.build_requires "libxml2"
-
-  pkg.apply_patch 'resources/patches/libxslt/CVE-2019-11068.patch'
 
   if platform.is_aix?
     pkg.environment "PATH", "/opt/pl-build-tools/bin:$(PATH)"
@@ -39,7 +37,10 @@ component "libxslt" do |pkg, settings, platform|
   end
 
   pkg.configure do
-    ["./configure --prefix=#{settings[:prefix]} --docdir=/tmp --with-libxml-prefix=#{settings[:prefix]} #{settings[:host]} #{disable_crypto} #{build}"]
+    [
+      'autoreconf -i',
+      "./configure --prefix=#{settings[:prefix]} --docdir=/tmp --with-libxml-prefix=#{settings[:prefix]} --without-python #{settings[:host]} #{disable_crypto} #{build}"
+    ]
   end
 
   pkg.build do
