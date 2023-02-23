@@ -32,6 +32,8 @@ component "pl-ruby-patch" do |pkg, settings, platform|
                         "powerpc64le-linux"
                       elsif platform.name == 'solaris-11-sparc'
                         "sparc-solaris-2.11"
+                      elsif platform.is_macos? && ruby_api_version.start_with?('3')
+                        "arm64-darwin"
                       elsif platform.is_macos?
                         "aarch64-darwin"
                       else

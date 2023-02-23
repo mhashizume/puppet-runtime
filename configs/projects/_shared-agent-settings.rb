@@ -88,6 +88,7 @@ platform_triple = "powerpc64le-suse-linux" if platform.architecture == "ppc64le"
 platform_triple = "powerpc64le-linux-gnu" if platform.architecture == "ppc64el"
 platform_triple = "arm-linux-gnueabihf" if platform.architecture == "armhf"
 platform_triple = "aarch64-redhat-linux" if platform.name == 'el-7-aarch64'
+platform_triple = "arm64-apple-darwin" if platform.is_cross_compiled? && platform.is_macos? && ruby_version_y.start_with?('3')
 platform_triple = "aarch64-apple-darwin" if platform.is_cross_compiled? && platform.is_macos?
 
 if platform.is_windows?
@@ -113,7 +114,7 @@ end
 if platform.is_cross_compiled_linux?
   host = "--host #{platform_triple}"
 elsif platform.is_cross_compiled? && platform.is_macos?
-  host = "--host aarch64-apple-darwin --build x86_64-apple-darwin --target aarch64-apple-darwin"
+  host = "--host #{platform_triple} --build x86_64-apple-darwin --target #{platform_triple}"
 elsif platform.is_solaris?
   # For solaris, we build cross-compilers
   if platform.architecture == 'i386'
