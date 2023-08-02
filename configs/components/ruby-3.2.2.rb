@@ -232,6 +232,9 @@ component 'ruby-3.2.2' do |pkg, settings, platform|
     elsif platform.name =~ /sles-12-ppc64le/
       # the ancient gcc version on sles-12-ppc64le does not understand -fstack-protector-strong, so remove the `strong` part
       rbconfig_changes["LDFLAGS"] = "-L. -Wl,-rpath=/opt/puppetlabs/puppet/lib -fstack-protector -rdynamic -Wl,-export-dynamic -L/opt/puppetlabs/puppet/lib"
+    elsif platform.name == 'solaris-11-i386'
+      # Building native extensions on Solaris 11 x86 will fail when trying to use fvisibility
+      rbconfig_changes['CFLAGS'] = '-Wl,-rpath=/opt/puppetlabs/puppet/lib -fvisibility=default -rdynamic -Wl,-export-dynamic -L/opt/puppetlabs/puppet/lib' 
     end
   elsif platform.is_macos? && platform.architecture == 'arm64' && platform.os_version.to_i >= 13
     rbconfig_changes["CC"] = 'clang'
