@@ -14,14 +14,17 @@ if platform.name =~ /el-(6|7)|ubuntu-(16|18.04-amd64)/
   pkg.version "2.0.94"
   pkg.md5sum "544f75aab11c2af352facc51af12029f"
   pkg.url "https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20100525/devel/libselinux-#{pkg.get_version}.tar.gz"
-  pkg.mirror "#{settings[:buildsources_url]}/libselinux-#{pkg.get_version}.tar.gz"
+elsif platform.name.start_with?('el-9')
+  pkg.version '3.4'
+  pkg.sha256sum '77c294a927e6795c2e98f74b5c3adde9c8839690e9255b767c5fca6acff9b779'
+  pkg.url "https://github.com/SELinuxProject/selinux/releases/download/#{pkg.get_version}/libselinux-#{pkg.get_version}.tar.gz"
 else
   pkg.version "2.9"
   pkg.md5sum "bb449431b6ed55a0a0496dbc366d6e31"
   pkg.apply_patch "resources/patches/ruby-selinux/selinux-29-function.patch"
   pkg.url "https://github.com/SELinuxProject/selinux/releases/download/20190315/libselinux-#{pkg.get_version}.tar.gz"
-  pkg.mirror "#{settings[:buildsources_url]}/libselinux-#{pkg.get_version}.tar.gz"
 end
+pkg.mirror "#{settings[:buildsources_url]}/libselinux-#{pkg.get_version}.tar.gz"
 
 pkg.build_requires "ruby-#{ruby_version}"
 cc = "/opt/pl-build-tools/bin/gcc"

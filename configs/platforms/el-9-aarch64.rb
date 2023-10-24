@@ -7,7 +7,7 @@ platform 'el-9-aarch64' do |plat|
     java-1.8.0-openjdk-devel
     patch 
     swig 
-    libselinux-devel 
+    libselinux-devel-3.4
     readline-devel 
     zlib-devel 
     systemtap-sdt-devel
