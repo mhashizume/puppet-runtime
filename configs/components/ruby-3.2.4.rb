@@ -38,6 +38,7 @@ component 'ruby-3.2.4' do |pkg, settings, platform|
 
   base = 'resources/patches/ruby_32'
 
+
   if platform.is_cross_compiled?
     pkg.apply_patch "#{base}/rbinstall_gem_path.patch"
   end
@@ -60,6 +61,9 @@ component 'ruby-3.2.4' do |pkg, settings, platform|
     # See: https://bugs.ruby-lang.org/issues/20000
     pkg.apply_patch "#{base}/openssl3_fips.patch"
   end
+
+  # This patch will not be required in Rubies that bundle REXML >= 3.2.7
+  pkg.apply_patch "#{base}/rexml_for_CVE-2024-35176.patch"
 
   ####################
   # ENVIRONMENT, FLAGS
@@ -300,4 +304,5 @@ component 'ruby-3.2.4' do |pkg, settings, platform|
       ]
     end
   end
+
 end

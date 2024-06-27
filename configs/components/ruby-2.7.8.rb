@@ -41,6 +41,8 @@ component 'ruby-2.7.8' do |pkg, settings, platform|
   pkg.apply_patch "#{base}/regexp_use_after_free.patch"
 
   pkg.apply_patch "#{base}/uri-redos-cve-2023-36617.patch"
+  pkg.apply_patch "#{base}/rexml_for_CVE-2024-35176.patch"
+
 
   if platform.is_cross_compiled?
     unless platform.is_macos?
@@ -268,4 +270,5 @@ component 'ruby-2.7.8' do |pkg, settings, platform|
       ]
     end
   end
+
 end
